@@ -1,48 +1,57 @@
 import { motion } from "framer-motion";
 import { wedding } from "../../data/wedding";
-
 import "./Envelope.css";
 
 export default function Envelope({ onOpen }) {
   return (
     <motion.section
-      className="screen"
+      className="envelope-screen"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      transition={{ duration: 0.8 }}
     >
-      <div className="backgroundGlow" />
+      <div className="bg-pattern"></div>
 
       <motion.div
-        className="inviteCard"
-        initial={{ y: 40, opacity: 0, scale: 0.95 }}
-        animate={{ y: 0, opacity: 1, scale: 1 }}
-        transition={{
-          duration: 0.8,
-        }}
+        className="invite-envelope"
+        initial={{ y: 40, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8 }}
       >
-        <p className="smallTitle">{wedding.title}</p>
+        <div className="envelope-border">
 
-        <div className="goldLine" />
+          <div className="top-decoration">
+            ✦
+          </div>
 
-        <h1 className="names">
-          {wedding.groom}
-          <br />
-          <span>&</span>
-          <br />
-          {wedding.bride}
-        </h1>
+          <p className="invite-title">
+            {wedding.title}
+          </p>
 
-        <p className="date">
-          {wedding.dateText}
-        </p>
+          <div className="gold-divider"></div>
 
-        <button
-          className="openButton"
-          onClick={onOpen}
-        >
-          АШУ
-        </button>
+          <h1 className="invite-names">
+            {wedding.groom}
+            <span>&</span>
+            {wedding.bride}
+          </h1>
+
+          <p className="invite-date">
+            {wedding.dateText}
+          </p>
+
+          <button
+            className="open-btn"
+            onClick={onOpen}
+          >
+            АШУ
+          </button>
+
+          <p className="tap-text">
+            Түртіңіз
+          </p>
+
+        </div>
       </motion.div>
     </motion.section>
   );

@@ -6,21 +6,11 @@ const API_URL =
 export default function RSVP() {
   const [form, setForm] = useState({
     name: "",
-    phone: "",
-    attendance: "Will attend",
-    guests: 1,
-    comment: "",
+    attendance: "Келемін",
   });
 
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
-
-  const handleChange = (e) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,96 +30,118 @@ export default function RSVP() {
       const result = await response.json();
 
       if (result.success) {
-        setMessage("✅ Thank you! Your RSVP has been received.");
+        setMessage("❤️ Рақмет! Жауабыңыз қабылданды.");
 
         setForm({
           name: "",
-          phone: "",
-          attendance: "Will attend",
-          guests: 1,
-          comment: "",
+          attendance: "Келемін",
         });
       } else {
-        setMessage("❌ Failed to send.");
+        setMessage("Жіберу кезінде қате орын алды.");
       }
-    } catch (err) {
-      console.error(err);
-      setMessage("❌ Network error.");
+    } catch {
+      setMessage("Интернетке қосылу қатесі.");
     }
 
     setLoading(false);
   };
 
   return (
-    <section className="py-28 px-6">
-      <div className="max-w-lg mx-auto">
+    <section className="py-24 px-6 bg-white">
+      <div className="max-w-xl mx-auto">
 
-        <h2 className="text-center text-5xl font-serif mb-12">
-          RSVP
+        <div className="w-24 h-px bg-[#B88A44] mx-auto mb-8"></div>
+
+        <h2
+          className="text-center text-5xl mb-12 text-[#2C2C2C]"
+          style={{ fontFamily: "Cormorant Garamond" }}
+        >
+          Тойға қатысуыңызды
+          <br />
+          растауыңызды сұраймыз!
         </h2>
 
-        <form onSubmit={handleSubmit}>
+        <form
+          onSubmit={handleSubmit}
+          className="bg-[#F7F4EF] border border-[#D8C49A] rounded-[30px] p-8 shadow-lg"
+        >
+          <label className="block mb-3 text-[#555]">
+            Аты-жөніңіз
+          </label>
 
           <input
+            type="text"
             name="name"
+            required
             value={form.name}
-            onChange={handleChange}
-            placeholder="Your Name"
-            className="w-full mb-4 rounded-xl bg-white/5 border border-white/10 px-5 py-4"
-            required
+            onChange={(e) =>
+              setForm({
+                ...form,
+                name: e.target.value,
+              })
+            }
+            className="w-full rounded-xl border border-[#D8C49A] bg-white px-5 py-4 outline-none mb-8"
           />
 
-          <input
-            name="phone"
-            value={form.phone}
-            onChange={handleChange}
-            placeholder="Phone Number"
-            className="w-full mb-4 rounded-xl bg-white/5 border border-white/10 px-5 py-4"
-            required
-          />
+          <label className="block mb-4 text-[#555]">
+            Қатысуыңыз
+          </label>
 
-          <select
-            name="attendance"
-            value={form.attendance}
-            onChange={handleChange}
-            className="w-full mb-4 rounded-xl bg-white/5 border border-white/10 px-5 py-4"
-          >
-            <option>Will attend</option>
-            <option>Can't attend</option>
-          </select>
+          <div className="space-y-4 mb-10">
 
-          <input
-            type="number"
-            name="guests"
-            value={form.guests}
-            onChange={handleChange}
-            min="1"
-            className="w-full mb-4 rounded-xl bg-white/5 border border-white/10 px-5 py-4"
-          />
+            <label className="flex items-center gap-3 cursor-pointer">
 
-          <textarea
-            rows="4"
-            name="comment"
-            value={form.comment}
-            onChange={handleChange}
-            placeholder="Comment"
-            className="w-full mb-6 rounded-xl bg-white/5 border border-white/10 px-5 py-4 resize-none"
-          />
+              <input
+                type="radio"
+                name="attendance"
+                value="Келемін"
+                checked={form.attendance === "Келемін"}
+                onChange={(e) =>
+                  setForm({
+                    ...form,
+                    attendance: e.target.value,
+                  })
+                }
+              />
+
+              Келемін
+
+            </label>
+
+            <label className="flex items-center gap-3 cursor-pointer">
+
+              <input
+                type="radio"
+                name="attendance"
+                value="Келе алмаймын"
+                checked={form.attendance === "Келе алмаймын"}
+                onChange={(e) =>
+                  setForm({
+                    ...form,
+                    attendance: e.target.value,
+                  })
+                }
+              />
+
+              Келе алмаймын
+
+            </label>
+
+          </div>
 
           <button
             disabled={loading}
-            className="w-full rounded-xl bg-yellow-500 py-4 text-black font-semibold hover:bg-yellow-400 transition"
+            className="w-full bg-[#B88A44] hover:bg-[#a67936] transition text-white rounded-full py-4 tracking-[2px]"
           >
-            {loading ? "Sending..." : "Send RSVP"}
+            {loading ? "Жіберілуде..." : "ЖІБЕРУ"}
           </button>
 
+          {message && (
+            <p className="mt-6 text-center text-[#2C2C2C]">
+              {message}
+            </p>
+          )}
         </form>
-
-        {message && (
-          <p className="mt-6 text-center">
-            {message}
-          </p>
-        )}
 
       </div>
     </section>
