@@ -1,35 +1,52 @@
+import { wedding } from "../data/wedding";
+import { motion } from "framer-motion";
+import { FaLocationDot } from "react-icons/fa6";
+
 export default function Location() {
-
   return (
+    <section className="py-28 bg-[#F7F4EF]">
 
-    <section className="py-28 px-6">
+      <motion.div
+        initial={{ opacity: 0, y: 60 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: .7 }}
+        className="max-w-5xl mx-auto px-6"
+      >
 
-      <h2 className="text-center text-5xl font-serif">
-        Venue
-      </h2>
+        <div className="bg-white rounded-[35px] border border-[#D8C49A] shadow-xl p-12 text-center">
 
-      <div className="max-w-5xl mx-auto mt-14 overflow-hidden rounded-3xl border border-white/10">
+          <FaLocationDot
+            className="mx-auto text-[#B88A44]"
+            size={42}
+          />
 
-        <div className="h-[420px] bg-[#182126] flex items-center justify-center text-2xl text-gray-400">
-          Google Maps
+          <h2
+            style={{ fontFamily: "Cormorant Garamond" }}
+            className="text-6xl mt-6 text-[#2C2C2C]"
+          >
+            {wedding.venue}
+          </h2>
+
+          <p className="mt-3 text-lg text-gray-600">
+            {wedding.city}
+          </p>
+
+          <div className="w-28 h-px bg-[#B88A44] mx-auto my-10"></div>
+
+          <a
+            href={wedding.mapLink}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-block rounded-full bg-[#B88A44] hover:bg-[#a67936] transition px-10 py-4 text-white tracking-[2px]"
+          >
+            МАРШРУТТЫ АШУ
+          </a>
+
         </div>
 
-      </div>
-
-      <div className="text-center mt-10">
-
-        <h3 className="text-3xl">
-          Restaurant Name
-        </h3>
-
-        <p className="mt-3 text-gray-400">
-          Astana, Kazakhstan
-        </p>
-
-      </div>
+      </motion.div>
 
     </section>
-
   );
-
 }

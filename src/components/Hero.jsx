@@ -1,38 +1,65 @@
+import { wedding } from "../data/wedding";
+import { motion } from "framer-motion";
+
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
 
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0B1215] via-[#162126] to-[#0B1215]" />
+      {/* Фон */}
+      <div className="absolute inset-0 bg-[#F7F4EF]" />
 
-      <div className="absolute w-[700px] h-[700px] rounded-full bg-yellow-500/10 blur-[150px]" />
+      {/* Световое пятно */}
+      <div className="absolute w-[700px] h-[700px] rounded-full bg-[#D8C49A]/20 blur-[140px]" />
 
-      <div className="relative text-center px-6">
+      {/* Орнамент */}
+      <div
+        className="absolute inset-0 opacity-[0.04]"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle,#B88A44 1px,transparent 1px)",
+          backgroundSize: "32px 32px",
+        }}
+      />
 
-        <div className="w-56 h-56 rounded-full border-2 border-yellow-500 mx-auto overflow-hidden shadow-2xl">
-          <img
-            src="https://picsum.photos/500"
-            alt="Couple"
-            className="w-full h-full object-cover"
-          />
-        </div>
-
-        <p className="mt-10 uppercase tracking-[8px] text-yellow-500">
-          Wedding Invitation
+      <motion.div
+        initial={{ opacity: 0, y: 70 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        className="relative text-center px-6"
+      >
+        <p className="uppercase tracking-[10px] text-[#B88A44] text-sm">
+          {wedding.title}
         </p>
 
-        <h1 className="mt-6 text-6xl md:text-8xl font-serif">
-          Groom
-          <span className="mx-5 text-yellow-500">&</span>
-          Bride
+        <div className="w-32 h-px bg-[#B88A44]/50 mx-auto mt-8 mb-10" />
+
+        <h1
+          style={{ fontFamily: "Cormorant Garamond" }}
+          className="text-7xl md:text-8xl leading-none font-medium text-[#2C2C2C]"
+        >
+          {wedding.groom}
         </h1>
 
-        <p className="mt-8 text-xl text-gray-300">
-          24 August 2027
+        <div
+          style={{ fontFamily: "Cormorant Garamond" }}
+          className="text-5xl text-[#B88A44] my-4"
+        >
+          &
+        </div>
+
+        <h1
+          style={{ fontFamily: "Cormorant Garamond" }}
+          className="text-7xl md:text-8xl leading-none font-medium text-[#2C2C2C]"
+        >
+          {wedding.bride}
+        </h1>
+
+        <div className="w-32 h-px bg-[#B88A44]/50 mx-auto mt-10 mb-8" />
+
+        <p className="tracking-[8px] text-[#666] text-lg">
+          {wedding.dateText}
         </p>
-
-      </div>
-
+      </motion.div>
     </section>
   );
 }

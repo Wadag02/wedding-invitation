@@ -1,12 +1,21 @@
 import { useEffect, useState } from "react";
+import { wedding } from "../data/wedding";
+import { motion } from "framer-motion";
 
 export default function Countdown() {
-
-  const weddingDate = new Date("2027-08-24T15:00:00");
+  const weddingDate = new Date(wedding.date);
 
   const getTime = () => {
-
     const diff = weddingDate - new Date();
+
+    if (diff <= 0) {
+      return {
+        days: 0,
+        hours: 0,
+        minutes: 0,
+        seconds: 0,
+      };
+    }
 
     return {
       days: Math.floor(diff / (1000 * 60 * 60 * 24)),
@@ -14,59 +23,76 @@ export default function Countdown() {
       minutes: Math.floor(diff / (1000 * 60)) % 60,
       seconds: Math.floor(diff / 1000) % 60,
     };
-
   };
 
   const [time, setTime] = useState(getTime());
 
   useEffect(() => {
-
     const timer = setInterval(() => {
       setTime(getTime());
     }, 1000);
 
     return () => clearInterval(timer);
-
   }, []);
 
+  const items = [
+    {
+      value: time.days,
+      label: "КҮН",
+    },
+    {
+      value: time.hours,
+      label: "САҒАТ",
+    },
+    {
+      value: time.minutes,
+      label: "МИНУТ",
+    },
+    {
+      value: time.seconds,
+      label: "СЕКУНД",
+    },
+  ];
+
   return (
+    <section className="py-28 bg-white">
 
-    <section className="py-28">
+      <motion.div
+        initial={{ opacity: 0, y: 60 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: .7 }}
+        viewport={{ once: true }}
+      >
 
-      <h2 className="text-center text-5xl font-serif">
-        Countdown
-      </h2>
+        <h2
+          style={{ fontFamily: "Cormorant Garamond" }}
+          className="text-center text-6xl text-[#2C2C2C]"
+        >
+          Той салтанатына дейін
+        </h2>
 
-      <div className="flex flex-wrap justify-center gap-6 mt-14">
+        <div className="w-32 h-px bg-[#B88A44] mx-auto mt-6 mb-16"></div>
 
-        {[
-          ["Days", time.days],
-          ["Hours", time.hours],
-          ["Minutes", time.minutes],
-          ["Seconds", time.seconds],
-        ].map(([label, value]) => (
+        <div className="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
 
-          <div
-            key={label}
-            className="w-36 h-36 rounded-3xl bg-white/5 border border-white/10 backdrop-blur flex flex-col justify-center items-center"
-          >
+          {items.map((item) => (
+            <div
+              key={item.label}
+              className="rounded-[28px] bg-[#F7F4EF] border border-[#D9C49B] shadow-lg p-8 text-center"
+            >
+              <p className="text-6xl font-bold text-[#2C2C2C]">
+                {String(item.value).padStart(2, "0")}
+              </p>
 
-            <p className="text-5xl font-bold">
-              {value}
-            </p>
+              <p className="mt-4 tracking-[3px] text-[#B88A44] text-sm">
+                {item.label}
+              </p>
+            </div>
+          ))}
 
-            <span className="mt-2 text-gray-400">
-              {label}
-            </span>
+        </div>
 
-          </div>
-
-        ))}
-
-      </div>
-
+      </motion.div>
     </section>
-
   );
-
 }

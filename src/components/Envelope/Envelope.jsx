@@ -1,82 +1,49 @@
 import { motion } from "framer-motion";
+import { wedding } from "../../data/wedding";
 
 import "./Envelope.css";
 
 export default function Envelope({ onOpen }) {
+  return (
+    <motion.section
+      className="screen"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      <div className="backgroundGlow" />
 
-    return (
+      <motion.div
+        className="inviteCard"
+        initial={{ y: 40, opacity: 0, scale: 0.95 }}
+        animate={{ y: 0, opacity: 1, scale: 1 }}
+        transition={{
+          duration: 0.8,
+        }}
+      >
+        <p className="smallTitle">{wedding.title}</p>
 
-        <motion.section
-            className="screen"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+        <div className="goldLine" />
+
+        <h1 className="names">
+          {wedding.groom}
+          <br />
+          <span>&</span>
+          <br />
+          {wedding.bride}
+        </h1>
+
+        <p className="date">
+          {wedding.dateText}
+        </p>
+
+        <button
+          className="openButton"
+          onClick={onOpen}
         >
-
-            <div className="glow"/>
-
-            <motion.p
-
-                initial={{ opacity:0,y:-20 }}
-                animate={{ opacity:1,y:0 }}
-                transition={{ delay:.2 }}
-
-                className="title"
-
-            >
-                Wedding Invitation
-            </motion.p>
-
-            <motion.div
-
-                whileHover={{
-                    scale:1.05,
-                    y:-10
-                }}
-
-                whileTap={{
-                    scale:.98
-                }}
-
-                transition={{
-                    type:"spring",
-                    stiffness:250
-                }}
-
-                className="envelope"
-
-                onClick={onOpen}
-
-            >
-
-                <div className="letter">
-
-                    ✦
-
-                </div>
-
-                <div className="front"/>
-
-                <div className="flap"/>
-
-            </motion.div>
-
-            <motion.p
-
-                initial={{ opacity:0 }}
-                animate={{ opacity:1 }}
-                transition={{ delay:1 }}
-
-                className="hint"
-
-            >
-
-                Tap the envelope
-
-            </motion.p>
-
-        </motion.section>
-
-    );
-
+          АШУ
+        </button>
+      </motion.div>
+    </motion.section>
+  );
 }
