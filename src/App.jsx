@@ -7,7 +7,6 @@ import Invitation from "./components/Invitation";
 import Countdown from "./components/Countdown";
 import Location from "./components/Location";
 import RSVP from "./components/RSVP";
-import Footer from "./components/Footer";
 
 export default function App() {
   const [opened, setOpened] = useState(false);
@@ -23,7 +22,6 @@ export default function App() {
       <Countdown />
       <Location />
       <RSVP />
-      <Footer />
     </main>
   );
 }
