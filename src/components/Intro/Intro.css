@@ -1,0 +1,365 @@
+.intro{
+
+    position:relative;
+
+    width:100%;
+    height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    overflow:hidden;
+
+    background:url("/images/intro/intro-bg.jpg") center center/cover no-repeat;
+
+    animation:introZoom 10s ease-in-out infinite alternate;
+
+    transition:1.2s;
+
+}
+
+.intro.opening{
+
+    filter:brightness(.9);
+
+}
+
+/* затемнение */
+
+.intro-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:rgba(245,240,232,.72);
+
+}
+
+/* контент */
+
+.intro-content{
+
+    position:relative;
+
+    z-index:5;
+
+    text-align:center;
+
+    padding:30px;
+
+    opacity:0;
+
+    transform:translateY(35px);
+
+    animation:fadeContent 1.3s ease forwards;
+
+}
+
+.subtitle{
+
+    font-size:14px;
+
+    letter-spacing:8px;
+
+    color:#B9924A;
+
+    margin-bottom:35px;
+
+}
+
+.intro h1{
+
+    font-family:"Cormorant Garamond", serif;
+
+    font-size:88px;
+
+    font-weight:400;
+
+    color:#222;
+
+    margin:0;
+
+}
+
+.and{
+
+    font-size:55px;
+
+    color:#B9924A;
+
+    margin:15px 0;
+
+}
+
+.gold-line{
+
+    width:140px;
+
+    height:1px;
+
+    background:#C6A86A;
+
+    margin:35px auto;
+
+    animation:goldGlow 3s ease-in-out infinite;
+
+}
+
+.date{
+
+    letter-spacing:7px;
+
+    color:#555;
+
+}
+
+.open-btn{
+
+    margin-top:55px;
+
+    width:220px;
+    height:58px;
+
+    border:none;
+
+    border-radius:40px;
+
+    background:#C6A86A;
+
+    color:white;
+
+    font-size:15px;
+
+    letter-spacing:3px;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    box-shadow:0 10px 25px rgba(198,168,106,.25);
+
+}
+
+.open-btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 14px 35px rgba(198,168,106,.45);
+
+}
+
+/* ----------------------- */
+/* ШТОРЫ */
+/* ----------------------- */
+
+.curtain{
+
+    position:absolute;
+
+    top:0;
+    bottom:0;
+
+    width:50%;
+
+    z-index:20;
+
+    background-size:cover;
+
+    background-repeat:no-repeat;
+
+    transition:2.5s cubic-bezier(.65,.05,.15,1);
+
+}
+
+.left{
+
+    left:0;
+
+    background-image:url("/images/intro/curtain-left.png");
+
+    background-position:left center;
+
+}
+
+.right{
+
+    right:0;
+
+    background-image:url("/images/intro/curtain-right.png");
+
+    background-position:right center;
+
+}
+
+.left.open{
+
+    transform:translateX(-100%);
+
+}
+
+.right.open{
+
+    transform:translateX(100%);
+
+}
+
+/* ----------------------- */
+/* ЛЮСТРА */
+/* ----------------------- */
+
+.chandelier{
+
+    position:absolute;
+
+    top:-5px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:260px;
+
+    z-index:3;
+
+    pointer-events:none;
+
+    animation:swing 6s ease-in-out infinite;
+
+}
+
+/* ----------------------- */
+/* АНИМАЦИИ */
+/* ----------------------- */
+
+@keyframes introZoom{
+
+    from{
+
+        background-size:100%;
+
+    }
+
+    to{
+
+        background-size:106%;
+
+    }
+
+}
+
+@keyframes fadeContent{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(35px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+@keyframes swing{
+
+    0%{
+
+        transform:translateX(-50%) rotate(-1deg);
+
+    }
+
+    50%{
+
+        transform:translateX(-50%) rotate(1deg);
+
+    }
+
+    100%{
+
+        transform:translateX(-50%) rotate(-1deg);
+
+    }
+
+}
+
+@keyframes goldGlow{
+
+    0%,
+    100%{
+
+        opacity:.55;
+
+    }
+
+    50%{
+
+        opacity:1;
+
+    }
+
+}
+
+/* ----------------------- */
+/* МОБИЛЬНАЯ ВЕРСИЯ */
+/* ----------------------- */
+
+@media(max-width:768px){
+
+    .intro h1{
+
+        font-size:60px;
+
+    }
+
+    .and{
+
+        font-size:42px;
+
+    }
+
+    .gold-line{
+
+        width:90px;
+
+    }
+
+    .subtitle{
+
+        letter-spacing:5px;
+
+        font-size:12px;
+
+    }
+
+    .date{
+
+        letter-spacing:4px;
+
+    }
+
+    .open-btn{
+
+        width:180px;
+
+        height:52px;
+
+        font-size:14px;
+
+    }
+
+    .chandelier{
+
+        width:170px;
+
+    }
+
+}
