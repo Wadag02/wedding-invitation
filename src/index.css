@@ -1,72 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@400;500;600&display=swap");
 @import "tailwindcss";
 
-:root {
-  --bg: #F7F4EF;
-  --text: #2C2C2C;
-  --gold: #B88A44;
-  --gold-light: #D8C49A;
-  --white: #FFFFFF;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: "Montserrat", sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#root {
-  width: 100%;
-  min-height: 100vh;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-}
-
-button,
-input,
-textarea,
-select {
-  font-family: inherit;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-::selection {
-  background: rgba(184, 138, 68, 0.25);
-}
-
-.gold-line {
-  width: 120px;
-  height: 1px;
-  margin: 0 auto;
-  background: var(--gold);
-}
-
-.section {
-  padding: 120px 24px;
-}
-
-.container {
-  width: min(1100px, 100%);
-  margin: 0 auto;
-}
+:root { --paper:#f7f3ed; --ink:#232323; --gold:#b89660; --gold-pale:#d5b07c; --line:rgba(184,150,96,.42); }
+* { box-sizing:border-box; margin:0; }
+html { scroll-behavior:smooth; background:var(--paper); }
+body { min-width:320px; overflow-x:hidden; color:var(--ink); font-family:"Montserrat",sans-serif; -webkit-font-smoothing:antialiased; }
+button,input,select,textarea { font:inherit; }
+button { cursor:pointer; }
+img { display:block; max-width:100%; }
+a { color:inherit; text-decoration:none; }
+#root { min-height:100vh; }
+.ornament { display:flex; align-items:center; justify-content:center; gap:10px; color:var(--gold); margin:20px auto; }
+.ornament::before,.ornament::after { content:""; width:56px; height:1px; background:var(--line); }
+.ornament span { font-size:13px; line-height:1; }
+.eyebrow { color:var(--gold); font-size:10px; letter-spacing:.32em; text-transform:uppercase; }
+.paper-section { padding:92px 24px; text-align:center; position:relative; background:var(--paper); }
+.paper-section:nth-of-type(even) { background:#fffdf9; }
+@media (max-width:480px) { .paper-section { padding:76px 20px; } }

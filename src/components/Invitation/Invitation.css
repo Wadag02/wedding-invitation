@@ -1,0 +1,4 @@
+.invitation-letter { padding-inline:max(28px,8vw); }
+.invitation-letter > p:not(.eyebrow) { max-width:500px; margin:0 auto 22px; color:#51493d; font:400 20px/1.55 "Cormorant Garamond",serif; }
+.letter-signature { margin-top:40px; color:#7a6543; font:400 20px "Cormorant Garamond",serif; }
+.letter-signature strong { display:block; margin-top:6px; font-size:29px; font-weight:500; }

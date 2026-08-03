@@ -1,58 +1,24 @@
 import { useState } from "react";
+import { wedding } from "../../data/wedding";
 import "./Intro.css";
 
 export default function Intro({ onOpen }) {
   const [opening, setOpening] = useState(false);
-
-  function handleOpen() {
-    setOpening(true);
-
-    setTimeout(() => {
-      onOpen();
-    }, 2500);
-  }
-
-  return (
-    <section className={`intro ${opening ? "opening" : ""}`}>
-
-      <div className={`curtain left ${opening ? "open" : ""}`}></div>
-      <div className={`curtain right ${opening ? "open" : ""}`}></div>
-
-      <img
-        src="/images/intro/chandelier.png"
-        alt=""
-        className="chandelier"
-      />
-
-      <div className="intro-overlay"></div>
-
-      <div className="intro-content">
-
-        <p className="subtitle">
-          ТОЙҒА ШАҚЫРУ
-        </p>
-
-        <h1>Санжар</h1>
-
-        <div className="and">&</div>
-
-        <h1>Еңлік</h1>
-
-        <div className="gold-line"></div>
-
-        <p className="date">
-          10 • 10 • 2026
-        </p>
-
-        <button
-          className="open-btn"
-          onClick={handleOpen}
-        >
-          АШУ
-        </button>
-
+  function handleOpen() { if (!opening) { setOpening(true); window.setTimeout(onOpen, 1850); } }
+  return <section className={`intro ${opening ? "is-opening" : ""}`}>
+    <div className="intro-glow" />
+    <button className="envelope" onClick={handleOpen} aria-label="Шақыруды ашу">
+      <div className="envelope-letter">
+        <p className="envelope-kicker">{wedding.title}</p>
+        <span className="envelope-flourish">✦</span>
+        <h1>{wedding.groom}<i>&amp;</i>{wedding.bride}</h1>
+        <p className="envelope-date">{wedding.dateText}</p>
       </div>
-
-    </section>
-  );
+      <div className="envelope-back" />
+      <div className="envelope-flap" />
+      <div className="envelope-front" />
+      <div className="wax-seal"><span>АШУ</span></div>
+    </button>
+    <p className="tap-hint">шақыруды ашу үшін басыңыз</p>
+  </section>;
 }

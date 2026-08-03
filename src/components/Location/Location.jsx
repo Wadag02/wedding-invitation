@@ -1,32 +1,9 @@
 import FadeSection from "../FadeSection/FadeSection";
+import { wedding } from "../../data/wedding";
+import "./Location.css";
 
-export default function Location() {
-  return (
-    <FadeSection>
-      <section className="py-24 px-6 text-center">
-
-        <h2 className="text-5xl font-serif mb-8">
-          Өтетін орны
-        </h2>
-
-        <p className="text-2xl mb-3">
-          Sanzhar Grand Ballroom
-        </p>
-
-        <p className="text-gray-400 mb-10">
-          Алматы, Қазақстан
-        </p>
-
-        <a
-          href="https://2gis.kz/almaty/geo/70000001054095105/77.048761,43.305975"
-          target="_blank"
-          rel="noreferrer"
-          className="inline-block rounded-full border border-[#C6A86A] px-8 py-4 hover:bg-[#C6A86A] hover:text-black transition"
-        >
-          2GIS арқылы ашу
-        </a>
-
-      </section>
-    </FadeSection>
-  );
-}
+export default function Location() { return <FadeSection><section className="paper-section location-section">
+  <p className="eyebrow">Той салтанаты өтетін орын</p><div className="ornament"><span>✦</span></div>
+  <div className="location-card"><div className="location-pin">⌖</div><h2>{wedding.venue}</h2><p>{wedding.city}</p><span className="location-rule" />
+  <a href={wedding.mapLink} target="_blank" rel="noreferrer">Картадан ашу <b>↗</b></a></div>
+</section></FadeSection>; }
