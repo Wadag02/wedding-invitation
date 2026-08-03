@@ -4,21 +4,10 @@ import "./Intro.css";
 
 export default function Intro({ onOpen }) {
   const [opening, setOpening] = useState(false);
-  function handleOpen() { if (!opening) { setOpening(true); window.setTimeout(onOpen, 1850); } }
+  function handleOpen() { if (!opening) { setOpening(true); window.setTimeout(onOpen, 2400); } }
   return <section className={`intro ${opening ? "is-opening" : ""}`}>
-    <div className="intro-glow" />
-    <button className="envelope" onClick={handleOpen} aria-label="Шақыруды ашу">
-      <div className="envelope-letter">
-        <p className="envelope-kicker">{wedding.title}</p>
-        <span className="envelope-flourish">✦</span>
-        <h1>{wedding.groom}<i>&amp;</i>{wedding.bride}</h1>
-        <p className="envelope-date">{wedding.dateText}</p>
-      </div>
-      <div className="envelope-back" />
-      <div className="envelope-flap" />
-      <div className="envelope-front" />
-      <div className="wax-seal"><span>АШУ</span></div>
-    </button>
-    <p className="tap-hint">шақыруды ашу үшін басыңыз</p>
+    <div className="intro-backdrop" /><div className="curtain curtain-left" aria-hidden="true" /><div className="curtain curtain-right" aria-hidden="true" />
+    <img src="/images/intro/chandelier.png.png" alt="" className="chandelier" /><div className="intro-vignette" />
+    <div className="intro-content"><p className="intro-kicker">{wedding.title}</p><span className="intro-star">✦</span><h1>{wedding.groom}<i>&amp;</i>{wedding.bride}</h1><p className="intro-date">{wedding.dateText}</p><button className="open-btn" onClick={handleOpen}>АШУ</button></div>
   </section>;
 }
