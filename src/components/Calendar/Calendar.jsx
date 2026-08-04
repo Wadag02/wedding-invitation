@@ -1,0 +1,4 @@
+import FadeSection from "../FadeSection/FadeSection";
+import "./Calendar.css";
+const copy={month:"\u049a\u0430\u0437\u0430\u043d",week:["\u0414\u0441","\u0421\u0441","\u0421\u0440","\u0411\u0441","\u0416\u043c","\u0421\u0431","\u0416\u0441"],note:"10 \u049a\u0430\u0437\u0430\u043d 2026, \u0441\u0430\u0493\u0430\u0442 18:00"};const days=Array.from({length:31},(_,index)=>index+1);
+export default function Calendar(){return <FadeSection><section className="paper-section calendar-section"><p className="calendar-month">{copy.month}</p><div className="calendar-week">{copy.week.map(day=><span key={day}>{day}</span>)}</div><div className="calendar-grid"><i/><i/><i/>{days.map(day=><span key={day} className={day===10?"marked":""}>{day}</span>)}</div><p className="calendar-note">{copy.note}</p></section></FadeSection>}
