@@ -1,1 +1,1 @@
-.invitation{background:#f7f3ed}.art-page{width:100%;min-height:100svh;aspect-ratio:786/1704;background:center top/100% 100% no-repeat}.invitation-page{background-image:url("/media/page-invitation.png")}
+.invitation{background:#f7f3ed}.art-page{position:relative;width:100%;min-height:100svh;overflow:hidden;background:#f7f3ed}.art-page>img{display:block;width:100%;height:auto}.invitation-page{background-image:none}
