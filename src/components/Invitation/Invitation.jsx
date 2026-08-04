@@ -1,8 +1,3 @@
-import Hero from "../Hero/Hero";
-import Countdown from "../Countdown/Countdown";
-import Location from "../Location/Location";
-import RSVP from "../RSVP/RSVP";
-import FadeSection from "../FadeSection/FadeSection";
-import { wedding } from "../../data/wedding";
-import "./Invitation.css";
-export default function Invitation(){return <main className="invitation"><Hero/><FadeSection><section className="paper-section invitation-letter"><p className="invitation-title">\u0411\u0456\u0437\u0434\u0456\u04a3 \u0431\u0430\u049b\u044b\u0442\u0442\u044b \u043a\u04af\u043d\u0456\u043c\u0456\u0437</p><div className="ornament"><span>✦</span></div>{wedding.invitationText.map(x=><p key={x}>{x}</p>)}<div className="letter-signature">\u0406\u0437\u0433\u0456 \u043d\u0438\u0435\u0442\u043f\u0435\u043d,<strong>{wedding.groom} &amp; {wedding.bride}</strong></div></section></FadeSection><Location/><RSVP/><Countdown/></main>}
+import Hero from "../Hero/Hero";import Countdown from "../Countdown/Countdown";import Location from "../Location/Location";import RSVP from "../RSVP/RSVP";import FadeSection from "../FadeSection/FadeSection";import {wedding}from"../../data/wedding";import"./Invitation.css";
+const title="\u0411\u0456\u0437\u0434\u0456\u04a3 \u0431\u0430\u049b\u044b\u0442\u0442\u044b \u043a\u04af\u043d\u0456\u043c\u0456\u0437",sign="\u0406\u0437\u0433\u0456 \u043d\u0438\u0435\u0442\u043f\u0435\u043d,";
+export default function Invitation(){return <main className="invitation"><Hero/><FadeSection><section className="paper-section invitation-letter"><p className="invitation-title">{title}</p><div className="ornament"><span>✦</span></div>{wedding.invitationText.map(x=><p key={x}>{x}</p>)}<div className="letter-signature">{sign}<strong>{wedding.groom} &amp; {wedding.bride}</strong></div></section></FadeSection><Location/><RSVP/><Countdown/></main>}
