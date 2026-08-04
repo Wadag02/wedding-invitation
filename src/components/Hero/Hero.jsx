@@ -4,7 +4,6 @@ import "./Hero.css";
 export default function Hero() {
   return <section className="hero">
     <video className="hero-video" autoPlay muted loop playsInline src="/media/ballroom.mp4" />
-    <img className="hero-drape" src="/media/drapery-chandelier.webp" alt="" />
     <div className="hero-wash" />
     <div className="hero-content">
       <p className="eyebrow">{wedding.title}</p>
