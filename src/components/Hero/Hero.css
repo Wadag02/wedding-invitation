@@ -1,11 +1,1 @@
-.hero { min-height:100svh; position:relative; overflow:hidden; display:grid; place-items:center; text-align:center; background:url("/images/intro/intro-bg.jpg.jpg") center/cover no-repeat; }
-.hero::before { content:""; position:absolute; inset:-2%; background:inherit; filter:blur(1px); transform:scale(1.05); animation:hero-zoom 16s ease-out forwards; }
-.hero-wash { position:absolute; inset:0; background:rgba(249,245,237,.75); }
-.hero-content { position:relative; padding:30px 20px; animation:hero-enter 1.2s ease both; }
-.hero .eyebrow { color:#8e7045; }
-.hero h1 { font:400 clamp(52px,15vw,76px)/.92 "Cormorant Garamond",serif; letter-spacing:-.055em; }
-.hero h1 i { color:var(--gold); font-weight:400; }
-.hero-date { margin-top:29px; padding-left:.3em; color:#6e604c; font-size:12px; letter-spacing:.3em; }
-.hero-scroll { position:absolute; bottom:30px; color:#806e51; font-size:9px; letter-spacing:.18em; text-transform:uppercase; writing-mode:vertical-rl; }
-.hero-scroll span { font-size:16px; margin-top:8px; }
-@keyframes hero-zoom { to { transform:scale(1.12); } } @keyframes hero-enter { from { opacity:0; transform:translateY(22px); } }
+.hero{min-height:100svh;position:relative;overflow:hidden;display:grid;place-items:center;text-align:center;background:#3b2414;color:#fff9ed}.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.04)}.hero::before{content:"";position:absolute;z-index:1;inset:0;background:linear-gradient(180deg,rgba(27,13,5,.28),rgba(22,9,3,.57))}.hero-drape{position:absolute;z-index:2;top:0;left:50%;width:min(700px,138vw);max-width:none;transform:translateX(-50%);pointer-events:none}.hero-wash{display:none}.hero-content{position:relative;z-index:3;padding:115px 20px 30px;animation:hero-enter 1.2s ease both}.hero .eyebrow{color:#f4dba4;text-shadow:0 2px 12px #3a1b08}.hero h1{font:400 clamp(54px,15vw,78px)/.9 "Cormorant Garamond",serif;letter-spacing:-.055em;text-shadow:0 3px 18px rgba(0,0,0,.35)}.hero h1 i{color:#f0cb83;font-weight:400}.hero-date{margin-top:29px;padding-left:.3em;color:#fff6e5;font-size:12px;letter-spacing:.3em}.hero-scroll{z-index:3;color:#f7dfaa}.hero-scroll span{font-size:16px;margin-top:8px}@keyframes hero-enter{from{opacity:0;transform:translateY(22px)}}
