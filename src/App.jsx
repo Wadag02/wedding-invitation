@@ -15,7 +15,7 @@ export default function App() {
       <MusicPlayer playing={opened}/>
 
       {opened
-        ? <Invitation/>
+        ? <div className="site-reveal"><Invitation/></div>
         : <Intro onOpen={() => setOpened(true)}/>
       }
 
