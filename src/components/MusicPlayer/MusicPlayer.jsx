@@ -5,7 +5,12 @@ export default function MusicPlayer({ playing }) {
   const audio = useRef(null);
   const [active, setActive] = useState(false);
   const play = () => audio.current?.play().then(() => setActive(true)).catch(() => setActive(false));
-  useEffect(() => { window.addEventListener("wedding:play-music", play); return () => window.removeEventListener("wedding:play-music", play); }, []);
+  const playFromIntro = () => {
+    if (!audio.current) return;
+    audio.current.currentTime = 22;
+    play();
+  };
+  useEffect(() => { window.addEventListener("wedding:play-music", playFromIntro); return () => window.removeEventListener("wedding:play-music", playFromIntro); }, []);
   useEffect(() => { if (playing) play(); }, [playing]);
   function toggle() { if (!audio.current) return; if (audio.current.paused) play(); else { audio.current.pause(); setActive(false); } }
   return <><audio ref={audio} loop preload="auto" src="/music/love-song-cover.mp3"/><button className={`music-button ${active ? "is-playing" : ""}`} onClick={toggle} aria-label={active ? "Музыканы өшіру" : "Музыканы қосу"}><span>{active ? "♫" : "♪"}</span></button></>;
