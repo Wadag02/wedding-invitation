@@ -6,7 +6,7 @@ import MusicPlayer from "./components/MusicPlayer/MusicPlayer";
 export default function App() {
   const [introDone, setIntroDone] = useState(false);
   return <>
-    <MusicPlayer playing={introDone}/>
+    <MusicPlayer/>
     <Invitation/>
     {!introDone && <Intro onOpen={() => setIntroDone(true)}/>}
   </>;
